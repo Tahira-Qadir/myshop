@@ -38,6 +38,10 @@
             <div style="padding:20px 25px">
                 <h3>{{product.title}}</h3>
                 <p>{{product.description}}</p>
+                {% if product.brand %}
+                    <!-- <p>{{product.brand.address.country}}</p> --> 
+                    <p>{{product.brand.title}}</p>  <!-- Cross Model Queries --> 
+                {% endif %}
                 <a href="">View Product</a>
             </div>
         </div>

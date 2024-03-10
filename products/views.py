@@ -3,12 +3,8 @@ from django.shortcuts import render
 from .models import Product
 # Create your views here.
 def home(request):
-    user = "Tahira"
-    product_numb = 4
     products = Product.objects.all().order_by('id')[:4]  # Product models load
     return render(request, "products/home.html",{
-        "name":user,
-        "product_numb":product_numb,
         "products":products,
     })
 
