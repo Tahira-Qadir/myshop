@@ -19,7 +19,14 @@ class Product(models.Model):
     image = models.ImageField(blank=True, upload_to='product-img')  # upload_to='product-img' This location only for this Model
     brand = models.CharField(max_length=50, null=True)
     price = models.PositiveIntegerField()
+    slug = models.SlugField(blank=True)
+    is_bestselller = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
     
+    def save(self, *args, **kargs):
+
+        super().save(*args, **kargs)
+        self.slug = self.id
+        super().save(*args, **kargs)

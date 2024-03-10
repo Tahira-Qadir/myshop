@@ -5,7 +5,7 @@ from .models import Product
 def home(request):
     user = "Tahira"
     product_numb = 4
-    products = Product.objects.all()  # Product models load
+    products = Product.objects.all().order_by('id')[:4]  # Product models load
     return render(request, "products/home.html",{
         "name":user,
         "product_numb":product_numb,
