@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Shirt
+from .models import Profile
 
 # Register your models here.
-admin.site.register(Shirt)
+
+admin.site.register(Profile)

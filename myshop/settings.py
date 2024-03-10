@@ -33,7 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 
     'products',
-
+    'users',
+    
     #default django apps
     'django.contrib.admin',
     'django.contrib.auth',
