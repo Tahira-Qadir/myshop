@@ -130,3 +130,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / 'static', 
 ] # Collect Static Files
+
+MEDIA_ROOT = BASE_DIR / "uploads"  # All image file save in "uploads" folder
+MEDIA_URL = "/media/"  # For Image url load on html files

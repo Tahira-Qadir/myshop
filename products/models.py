@@ -12,3 +12,14 @@ class Shirt(models.Model):
     def __str__(self):
         return self.title
     
+class Product(models.Model):
+    title = models.CharField(max_length=50)
+    description = models.TextField() 
+    category = models.CharField(max_length=50)
+    image = models.ImageField(blank=True, upload_to='product-img')  # upload_to='product-img' This location only for this Model
+    brand = models.CharField(max_length=50, null=True)
+    price = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.title
+    
