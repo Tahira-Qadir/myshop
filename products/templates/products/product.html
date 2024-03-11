@@ -26,17 +26,28 @@
         </main>
         <section id="feedback">
             <h3>Customer's feedbacks:</h3>
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color:green">{{message}}</p>
+                {% endfor %}
+            {% endif %}
             <form method="POST">
                 {% csrf_token %}
-                <label for="username">Name</label> <br>
-                <input id="username" name="username" type="text"> <br>
+                {% for field in form %}
+                    {{field.label}} <br>
+                    {{field}} <br>
+
+                    {% comment %} {% if field.help_text %}
+                    <p>{{field.help_text}}</p>
+                    {% endif %} {% endcomment %}
+
+                    {% for error in field.errors %}
+                        <p style="color:red">{{error}}</p>
+                    {% endfor %}
+                    
+                {% endfor %}
                 <button type="submit">Submit</button>
             </form>
-            <p>
-                {% if result %}
-                Your name was Register Successfully.
-                {% endif %}
-            </p>
         </section>
     </div>
 
