@@ -18,19 +18,7 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.title
-    
-# class Shirt(models.Model):
-#     title = models.CharField(max_length=70)
-#     price = models.PositiveIntegerField()
-#     # Updating Models
-#     brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True)  # one-to-many relationship with Brand model
-#     price = models.PositiveIntegerField()
-#     description = models.TextField(blank=True)          # 2nd way blank=True
-#     is_bestselller = models.BooleanField(default=False) # 3rd way default=False
 
-#     def __str__(self):
-#         return self.title
-    
 class Category(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField() 
@@ -57,3 +45,12 @@ class Product(models.Model):
         super().save(*args, **kargs)
         self.slug = self.id
         super().save(*args, **kargs)
+
+class Feedback(models.Model):
+    name = models.CharField(max_length=50)
+    rating = models.PositiveIntegerField()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    text = models.TextField()
+    
+    def __str__(self):
+        return f"{self.product} - Rating{self.rating}"
