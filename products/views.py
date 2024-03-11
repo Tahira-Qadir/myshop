@@ -11,8 +11,22 @@ def home(request):
 def signup(request):
     return render(request, "products/signup.html")
 
-def product_cat(requeste, product):
+def product_cat(request, product):
     if product == "suits" or product == "dresses" or product == "shirts" or product == "shoes":
         return HttpResponse(f"Here is the list of our {product}.")
     else:
         return HttpResponse("Does not exist.")
+
+def product_page(request, product_brand, product_slug):
+    product = Product.objects.get(slug = product_slug)
+    if request.method == "GET":
+        return render(request, "products/product.html", {
+            "product": product
+            })
+    else:
+        result = request.POST["username"]
+        return render(request, "products/product.html", {
+            "product": product,
+            "result":result
+            })
+    

@@ -42,7 +42,7 @@
                     <!-- <p>{{product.brand.address.country}}</p> --> 
                     <p>{{product.brand.title}}</p>  <!-- Cross Model Queries --> 
                 {% endif %}
-                <a href="">View Product</a>
+                <a href="{% url "product_page" product.brand.title product.slug %}">View Product</a>
             </div>
         </div>
         {% endfor %}
